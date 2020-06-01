@@ -92,6 +92,14 @@
                 "hardwareProfile": {
                     "vmSize": "[parameters('VM_Size')]"
                 },
+                "osProfile": {
+                    "computerName": "[parameters('VM_Name')]",
+                    "adminUsername": "[parameters('VM_AdminUsername')]",
+                    "adminPassword": "[parameters('VM_AdminPassword')]",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
                 "storageProfile": {
                     "imageReference": {
                         "publisher": "[variables('VM_Publisher')]",
@@ -108,18 +116,6 @@
                     },
                     "dataDisks": []
                 },
-                 "osProfile": {
-                    "computerName": "[parameters('VM_Name')]",
-                    "adminUsername": "[parameters('VM_AdminUsername')]",
-                    "adminPassword": "[parameters('VM_AdminPassword')]",
-                    "windowsConfiguration": {
-                        "provisionVMAgent": true,
-                        "enableAutomaticUpdates": true
-                    },
-                    "secrets": [],
-                    "allowExtensionOperations": true,
-                    "requireGuestProvisionSignal": true
-                 },
                 "networkProfile": {
                     "networkInterfaces": [
                         {
@@ -129,5 +125,7 @@
                 }
                 
             }
+    
+        }
     ]
 }
