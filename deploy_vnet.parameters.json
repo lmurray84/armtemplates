@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnet_name": {
+            "value": "lm-vnet-neu-vs",
+            "metadata": {
+                "description": "VNet name"
+            }
+        },
+        "vnet_address_space": {
+            "value": "10.10.0.0/16",
+            "metadata": {
+                "description": "VNet IP address space"
+            }
+        },
+        "subnet1_name": {
+            "value": "subnet_10.10.1.0",
+            "metadata": {
+                "description": "Subnet1 name"
+            }
+        },
+        "subnet1_address_space": {
+            "value": "10.10.1.0/24",
+            "metadata": {
+                "description": "Subnet1 IP address space"
+            }
+        },
+        "location": {
+            "value": "north europe",
+            "metadata": {
+                "description": "north europe"
+            }
+        }
+    }
+}
+   
