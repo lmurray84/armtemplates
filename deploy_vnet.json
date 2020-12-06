@@ -1,0 +1,66 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnet_name": {
+            "type": "string",
+            "metadata": {
+                "description": "VNet name"
+            }
+        },
+        "vnet_address_space": {
+            "type": "string",
+            "metadata": {
+                "description": "VNet IP address space"
+            }
+        },
+        "subnet1_name": {
+            "type": "string",
+            "metadata": {
+                "description": "Subnet1 name"
+            }
+        },
+        "subnet1_address_space": {
+            "type": "string",
+            "metadata": {
+                "description": "Subnet1 IP address space"
+            }
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "Location for VNet"
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-05-01",
+            "name": "[parameters('vnet_name')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('vnet_address_space')]"
+                    ]
+                }
+            },
+            "resources": [
+                {
+                    "type": "subnets",
+                    "apiVersion": "2020-05-01",
+                    "location": "[parameters('location')]",
+                    "name": "[parameters('subnet1_name')]",
+                    "dependsOn": [
+                        "[parameters('vnet_name')]"
+                    ],
+                    "properties": {
+                        "addressPrefix": "[parameters('subnet1_address_space')]"
+                    }
+                }
+            ]
+        }
+    ]
+}
